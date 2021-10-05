@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+/*
+    Ulole-Command-Line-Interface
+ */
+
+use com\example\myproject\App;
+use com\example\myproject\helper\cli\CustomCLI;
+use de\interaapps\ulole\core\cli\CLIBootstrapper;
+use de\interaapps\ulole\core\Environment;
+
+chdir(".");
+(require_once "autoload.php")();
+if (file_exists("vendor/autoload.php"))
+    require_once "vendor/autoload.php";
+
+$app = (new App)
+    ->setInCLI(true) // Deactivates the web stuff
+    ->start(Environment::fromCurrent());
+
+(new CLIBootstrapper($argv))
+    ->register(new CustomCLI())
+    ->addFrameworkHandlers($app)
+    ->run();
