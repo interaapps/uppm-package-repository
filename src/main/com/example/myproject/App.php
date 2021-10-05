@@ -6,6 +6,7 @@ use com\example\myproject\controller\PackageController;
 use com\example\myproject\controller\SecondTestController;
 use com\example\myproject\controller\OrganisationController;
 use com\example\myproject\controller\UserController;
+use com\example\myproject\helper\Web;
 use com\example\myproject\model\Organisation;
 use com\example\myproject\model\Package;
 use com\example\myproject\model\PackageVersion;
@@ -60,6 +61,10 @@ class App extends WebApplication {
 
         $router->notFound(function(){
             view("error", ["error" => "Page not found"]);
+        });
+
+        $router->get("/autoload.txtphp", function(){
+            return Web::httpRequest("https://raw.githubusercontent.com/interaapps/uppm/master/autoload.php");
         });
 
         $router->addController(PackageController::class);
