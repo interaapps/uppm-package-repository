@@ -38,7 +38,7 @@ class PackageController {
             if (PackageVersion::table()->where("package_id", $package->id)->where("name", $release->name)->count() == 0) {
                 $packageVersion = new PackageVersion();
                 $packageVersion->name = $release->name;
-                $packageVersion->download_url = $release->tarball_url;
+                $packageVersion->download_url = $release->zipball_url;
                 $packageVersion->package_id = $package->id;
                 $packageVersion->save();
             }
