@@ -7,6 +7,6 @@ use de\interaapps\ulole\core\jobs\JobsMigration;
 class migration_210219_140231_jobs extends JobsMigration {
     public function __construct()
     {
-        $this->setTableName(uppm_packages_jobs);
+        $this->setTableName("uppm_packages_jobs");
     }
 }
