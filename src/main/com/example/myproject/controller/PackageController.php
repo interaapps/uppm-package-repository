@@ -24,7 +24,7 @@ class PackageController {
         return $package->createResponse();
     }
 
-    #[Route("/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/checkgithub", method: "GET")]
+    #[Route("/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/checkgithub", method: "GET|POST")]
     public function checkGithub(Request $req, Response $resp, $orgaName, $name){
         $package = $this->getPackage($orgaName, $name);
         if ($package == null) {
