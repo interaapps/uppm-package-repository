@@ -27,7 +27,7 @@ class App extends WebApplication {
         self::setInstance($this);
     }
 
-    public function init(){
+    public function init() : void {
         $this->getConfig()
             ->loadPHPFile("env.php")
             ->loadENVFile(".env")
@@ -49,15 +49,8 @@ class App extends WebApplication {
      * This'll be called before running the app for the web.
      * Handle routes, views and other stuff needed for running for the web here.
      */
-    public function run() {
+    public function run() : void {
         $router = $this->getRouter();
-
-        $router
-            ->get("/a/(.*)", function($req, $res, $test = null){
-                $res->json([
-                    "Yep" => $test
-                ]);
-            });
 
         $router->notFound(function(){
             view("error", ["error" => "Page not found"]);
@@ -67,10 +60,10 @@ class App extends WebApplication {
             return Web::httpRequest("https://raw.githubusercontent.com/interaapps/uppm/master/autoload.php");
         });
 
-        $router->addController(PackageController::class);
-        $router->addController(AuthController::class);
-        $router->addController(UserController::class);
-        $router->addController(OrganisationController::class);
+        $router->addController(new PackageController());
+        $router->addController(new AuthController());
+        $router->addController(new UserController());
+        $router->addController(new OrganisationController());
     }
 
     public static function main(Environment $environment){

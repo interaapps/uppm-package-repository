@@ -1,4 +1,4 @@
-FROM webdevops/php-nginx:8.0
+FROM webdevops/php-nginx:8.1
 
 COPY --chown=application . /app
 WORKDIR /app

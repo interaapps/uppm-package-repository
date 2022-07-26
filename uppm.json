@@ -6,8 +6,8 @@
     "keywords": [],
     "modules": {
         "uloleorm": "2.0.1",
-        "deverm": "5.0.5",
-        "ulole-core": "3.0.6"
+        "deverm": "5.1.0",
+        "ulole-core": "3.1.4"
     },
     "run": {
         "cli": "cli"
